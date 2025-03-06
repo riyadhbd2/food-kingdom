@@ -10,7 +10,8 @@ const FoodItem = ({ item }) => {
   const {cartItems, addToCart, removeFromCart} = useContext(StoreContext);
 
   return (
-    <div className="w-full p-3 bg-white rounded-lg shadow-md sm:max-w-[300px] md:max-w-[350px] lg:max-w-[400px] mx-auto">
+    <div className="w-full p-5
+     bg-white rounded-lg shadow-md sm:max-w-[300px] md:max-w-[350px] lg:max-w-[400px] mx-auto ">
       <div className="w-full relative">
         <img
           className="w-full h-40 sm:h-48 md:h-56 lg:h-64 object-cover rounded-lg"
@@ -31,7 +32,7 @@ const FoodItem = ({ item }) => {
           </div>
         )}
       </div>
-      <div className="p-3">
+      <div className="">
         <div className="flex justify-between items-center">
           <p className="font-semibold text-base sm:text-lg md:text-xl">
             {name}
