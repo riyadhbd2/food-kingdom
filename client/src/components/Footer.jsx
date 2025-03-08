@@ -7,7 +7,7 @@ const Footer = () => {
       <div className="w-full max-w-7xl grid grid-cols-1 md:grid-cols-3 gap-10 text-center md:text-left">
         {/* Logo & Description */}
         <div className="flex flex-col items-center md:items-start gap-5">
-          <img src={assets.logo} alt="Logo" className="w-32" />
+          <h1 className="text-orange-400 text-bold text-xl">FOOD<span className="text-white ml-1">PACK </span></h1>
           <p className="max-w-xs">
             Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptate, dolores.
           </p>
