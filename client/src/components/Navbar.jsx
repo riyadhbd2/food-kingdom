@@ -1,15 +1,17 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { assets } from '../assets/assets';
+import { StoreContext } from '../context/StoreContext';
 
 const Navbar = () => {
+  const { cartItems} = useContext(StoreContext);
   return (
     <div className='flex items-center justify-between mt-3'>
       <img className='w-28 sm:w-36' src={assets.logo} alt='Logo' />
-      <ul className='hidden md:flex gap-4 sm:gap-6 text-[#49557e] text-sm sm:text-lg cursor-pointer'>
-        <li>Home</li>
-        <li>Menu</li>
-        <li>Mobile App</li>
-        <li>Contact Us</li>
+      <ul className='hidden md:flex gap-4 sm:gap-6 text-[#49557e] text-sm sm:text-lg'>
+        <li className='cursor-pointer'>Home</li>
+        <li className='cursor-pointer'>Menu</li>
+        <li className='cursor-pointer'>Mobile App</li>
+        <li className='cursor-pointer'>Contact Us</li>
       </ul>
       <div className='flex items-center gap-2 sm:gap-5'>
         <img className='w-4 sm:w-5 cursor-pointer' src={assets.search_icon} alt='Search' />
