@@ -10,7 +10,7 @@ const Header = () => {
         <p className='w-full sm:w-3/4 text-white text-sm sm:text-base md:text-lg'>
           Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est, praesentium accusamus. Vero veritatis numquam nam, dignissimos animi ex eligendi expedita!
         </p>
-        <button className='bg-white px-4 sm:px-6 py-2 rounded-full text-sm sm:text-base font-medium hover:bg-orange-500 hover:text-white transition duration-300'>
+        <button className='bg-white px-4 sm:px-6 py-2 rounded-full text-sm sm:text-base font-medium hover:bg-[#fff4f2] transition duration-300'>
           View Menu
         </button>
       </div>

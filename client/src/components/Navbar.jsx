@@ -4,14 +4,11 @@ import { assets } from "../assets/assets";
 const Navbar = () => {
   return (
     <div className="flex items-center justify-between mt-3">
-      <img className="w-28 sm:w-36" src={assets.logo} alt="Logo" />
+      <h1 className="text-3xl text-orange-400 font-bold">
+        FOOD <span className="text-black ">PACK</span>
+      </h1>
       <ul className="hidden md:flex gap-4 sm:gap-6 text-[#49557e] text-sm sm:text-lg">
-        <Link
-          to="/"
-          smooth={true}
-          duration={500}
-          className="cursor-pointer"
-        >
+        <Link to="/" smooth={true} duration={500} className="cursor-pointer">
           Home
         </Link>
         <Link to="menu" smooth={true} duration={500} className="cursor-pointer">
@@ -45,7 +42,7 @@ const Navbar = () => {
             1
           </div>
         </div>
-        <button className="text-[#49557e] border border-orange-400 px-4 sm:px-7 py-1 rounded-full hover:bg-[#fff4f2] hover:scale-105 transition-all duration-700">
+        <button className="text-black border border-orange-400 px-4 sm:px-7 py-1 rounded-full hover:bg-[#fff4f2] hover:scale-105 transition-all duration-700">
           Sign In
         </button>
       </div>
