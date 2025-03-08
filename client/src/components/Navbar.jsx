@@ -1,7 +1,7 @@
 import { Link } from "react-scroll";
 import { assets } from "../assets/assets";
 
-const Navbar = () => {
+const Navbar = ({setShowLogin}) => {
   return (
     <div className="flex items-center justify-between mt-3">
       <h1 className="text-3xl text-orange-400 font-bold">
@@ -42,7 +42,7 @@ const Navbar = () => {
             1
           </div>
         </div>
-        <button className="text-black border border-orange-400 px-4 sm:px-7 py-1 rounded-full hover:bg-[#fff4f2] hover:scale-105 transition-all duration-700">
+        <button onClick={()=> setShowLogin(true)} className="text-black border border-orange-400 px-4 sm:px-7 py-1 rounded-full hover:bg-[#fff4f2] hover:scale-105 transition-all duration-700">
           Sign In
         </button>
       </div>
