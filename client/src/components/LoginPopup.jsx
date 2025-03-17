@@ -45,10 +45,13 @@ const LoginPopup = ({ setShowLogin }) => {
         </button>
 
         {/* Terms Agreement */}
-        <div className="flex items-center gap-2">
+        {
+          currentState === 'Sign Up' ?  <div className="flex items-center gap-2">
           <input type="checkbox" required />
           <p>By continuing, I agree to the terms and conditions.</p>
-        </div>
+        </div> : ""
+        }
+       
 
         {/* Switch between Login & Signup */}
         <p className="text-sm">

@@ -1,12 +1,17 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate} from "react-router-dom";
 import { Link as ScrollLink } from "react-scroll";
 import { assets } from "../assets/assets";
-// import { useContext } from 'react';
+import { useContext } from 'react';
 import { StoreContext } from '../context/StoreContext';
+// import { useState } from 'react';
 
 const Navbar = ({ setShowLogin }) => {
 
-  // const { cartItems, food_list} = useContext(StoreContext);
+  const { getTotalCartAmount, getTotalItemCount} = useContext(StoreContext);
+
+  // const [itemNumber, setItemNumber] = useState(0);
+
+  const navigate = useNavigate();
 
    // Filter only items in the cart
   // const cartProducts = food_list.filter(item => cartItems[item._id] > 0);
@@ -58,19 +63,17 @@ const Navbar = ({ setShowLogin }) => {
           src={assets.search_icon}
           alt="Search"
         />
-        <div className="relative">
-          <Link to="/cart">
+        <div onClick={()=>navigate('/cart')} className="relative cursor-pointer">
+          <div>
             <img
-              className="w-4 sm:w-5 cursor-pointer"
+              className="w-4 sm:w-5"
               src={assets.basket_icon}
               alt="Basket"
             />
-          </Link>
-          {
-
-          }
-          <div className="absolute min-w-5 min-h-3 bg-orange-400 border rounded-full top-[-4px] sm:top-[-8px] right-[-4px] sm:right-[-8px] text-white text-[10px] text-center p-[1px]">
-            1
+          </div>
+        
+          <div className={ getTotalCartAmount() === 0 ? "hidden" : "absolute min-w-5 min-h-3 bg-orange-400 border rounded-full top-[-4px] sm:top-[-8px] right-[-4px] sm:right-[-8px] text-white text-[10px] text-center p-[1px]"}>
+            {getTotalItemCount()}
           </div>
         </div>
         <button

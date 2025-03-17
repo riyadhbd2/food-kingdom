@@ -3,44 +3,82 @@ import { food_list } from "../assets/assets";
 
 export const StoreContext = createContext(null);
 
-const StoreContextProvider = ({children})=>{
+const StoreContextProvider = ({ children }) => {
+  const [cartItems, setCartItems] = useState({});
 
-    const [cartItems, setCartItems] = useState({});
+  // add to cart function
+  const addToCart = (itemId) => {
+    if (!cartItems[itemId]) {
+      setCartItems((prev) => ({ ...prev, [itemId]: 1 }));
+    } else {
+      setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] + 1 }));
+    }
+  };
 
+  // remove from cart function
+  const removeFromCart = (itemId) => {
+    setCartItems((prev) => {
+      const newCart = { ...prev };
+      delete newCart[itemId]; // Remove the entire item from the cart
+      return newCart;
+    });
+  };
 
-    // add to cart function
-    const addToCart = (itemId) => {
-        if(!cartItems[itemId]){
-            setCartItems((prev)=>({...prev, [itemId]:1}))
+  //   get total function
+  const getTotalCartAmount = () => {
+    let totalAmount = 0;
+
+    // Convert food_list into a Map for faster lookups
+    const foodMap = new Map(
+      food_list.map((product) => [String(product._id), product])
+    );
+
+    for (const itemId in cartItems) {
+      const quantity = cartItems[itemId];
+      if (quantity > 0) {
+        const itemInfo = foodMap.get(itemId); // Use string keys
+        if (itemInfo) {
+          totalAmount += itemInfo.price * quantity;
         }
-        else{
-            setCartItems((prev)=>({...prev, [itemId]: prev[itemId]+ 1}))
-        }
+      }
     }
 
-    // remove from cart function
-    const removeFromCart = (itemId) =>{
-        setCartItems((prev)=>({...prev, [itemId]: prev[itemId] - 1}))
-    } 
+    return totalAmount;
+  };
 
-    useEffect(()=>{
-        console.log(cartItems);
-    }, [cartItems])
+  //   get total item number
 
+  const getTotalItemCount = () => {
+    return Object.values(cartItems).reduce(
+      (total, quantity) => total + quantity,
+      0
+    );
+  };
+  //   cart data to persist across refreshes
+  useEffect(() => {
+    const savedCart = localStorage.getItem("cart");
+    if (savedCart) setCartItems(JSON.parse(savedCart));
+  }, []);
 
-    const contextValue ={
-        food_list,
-        cartItems,
-        setCartItems,
-        addToCart,
-        removeFromCart
-    }
+  useEffect(() => {
+    localStorage.setItem("cart", JSON.stringify(cartItems));
+  }, [cartItems]);
 
-    return(
-        <StoreContext.Provider value={contextValue}>
-            {children}
-        </StoreContext.Provider>
-    )
-}
+  const contextValue = {
+    food_list,
+    cartItems,
+    setCartItems,
+    addToCart,
+    removeFromCart,
+    getTotalCartAmount,
+    getTotalItemCount,
+  };
+
+  return (
+    <StoreContext.Provider value={contextValue}>
+      {children}
+    </StoreContext.Provider>
+  );
+};
 
 export default StoreContextProvider;
