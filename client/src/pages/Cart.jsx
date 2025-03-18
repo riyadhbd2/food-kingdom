@@ -74,12 +74,12 @@ const Cart = () => {
               <hr />
               <div className="flex justify-between text-gray-600">
                 <p>Delivery Fee</p>
-                <p>${2}</p>
+                <p>${getTotalCartAmount() === 0 ?  0: 2}</p>
               </div>
               <hr />
               <div className="flex justify-between font-semibold text-gray-800">
                 <p>Total</p>
-                <p>${getTotalCartAmount() + 2}</p>
+                <p>${getTotalCartAmount() === 0 ? 0 : getTotalCartAmount() + 2}</p>
               </div>
             </div>
 
