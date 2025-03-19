@@ -5,13 +5,15 @@ import { Routes, Route } from "react-router-dom";
 import Add from './pages/Add';
 import List from './pages/List';
 import Orders from './pages/Orders';
+import { ToastContainer} from 'react-toastify';
 
 const App = () => {
   return (
     <div>
+      <ToastContainer />
       <Navbar/>
       <hr/>
-      <div>
+      <div className='md:flex'>
         <Sidebar/>
         <Routes>
           <Route path="/add" element={<Add/>}/>
