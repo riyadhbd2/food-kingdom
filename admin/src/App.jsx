@@ -13,7 +13,7 @@ const App = () => {
       <ToastContainer />
       <Navbar/>
       <hr/>
-      <div className='md:flex'>
+      <div className='md:flex gap-10'>
         <Sidebar/>
         <Routes>
           <Route path="/add" element={<Add/>}/>
