@@ -3,15 +3,41 @@ import validator from "validator";
 import jwt from "jsonwebtoken";
 import userModel from "../models/userModel.js";
 
-// login user
-const loginUser = async (req, res) => {
-
-};
 
 // create token
 const createToken = (id) =>{
     return jwt.sign({id},process.env.JWT_SECRET,{ expiresIn: "7d" });
 }
+// login user
+const loginUser = async (req, res) => {
+    const {email, password} = req.body;
+    try {
+        if (!email || !password) {
+            return res.json({ success: false, message: "Email and Password required"});
+        }
+        // check user availabe or not
+        const user = await userModel.findOne({email});
+        if (!user) {
+            return res.json({ success: false, message: "User not registered. Please Register"});
+        }
+
+        // password match or not
+        const isMatch = await bcrypt.compare(password, user.password);
+
+        if (!isMatch) {
+            return res.json({ success: false, message: "Password didn't match, give correct password"});
+        }
+
+        const token = createToken(user._id);
+        return res.json({ success: true, token});
+        
+    } catch (error) {
+        console.error(error);
+        res.json({success: false, message: "Error"})
+    }
+};
+
+
 // register user
 const registerUser = async (req, res) => {
   const { name, email, password } = req.body;
