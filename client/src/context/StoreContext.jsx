@@ -4,7 +4,11 @@ import { food_list } from "../assets/assets";
 export const StoreContext = createContext(null);
 
 const StoreContextProvider = ({ children }) => {
+
   const [cartItems, setCartItems] = useState({});
+  const [token, setToken] = useState("")
+  const url = "http://localhost:6006";
+  
 
   // add to cart function
   const addToCart = (itemId) => {
@@ -72,6 +76,9 @@ const StoreContextProvider = ({ children }) => {
     removeFromCart,
     getTotalCartAmount,
     getTotalItemCount,
+    url,
+    token,
+    setToken
   };
 
   return (

@@ -6,6 +6,8 @@ import Home from "./pages/Home";
 import PlaceOrder from "./pages/PlaceOrder";
 import Footer from "./components/Footer";
 import LoginPopup from "./components/LoginPopup";
+import { ToastContainer} from 'react-toastify';
+
 
 const App = () => {
 
@@ -13,6 +15,7 @@ const App = () => {
 
   return (
     <>
+    <ToastContainer />
     {
       showLogin ? <LoginPopup setShowLogin={setShowLogin}/> : <></>
     }
