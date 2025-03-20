@@ -4,7 +4,7 @@ import foodModel from "../models/foodModel.js";
 // Add food item
 const addFood = async (req, res) => {
   try {
-    // ✅ Check if the file exists before accessing it
+    // Check if the file exists before accessing it
     if (!req.file) {
       return res
         .status(400)
@@ -13,14 +13,14 @@ const addFood = async (req, res) => {
 
     const { name, price, category, description } = req.body;
 
-    // ✅ Check if all fields are provided
+    // Check if all fields are provided
     if (!name || !price || !category || !description) {
       return res
         .status(400)
         .json({ success: false, message: "All fields are required" });
     }
 
-    // ✅ Get the image filename
+    // Get the image filename
     const image_filename = req.file.filename;
 
     const food = new foodModel({
