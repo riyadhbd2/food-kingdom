@@ -3,13 +3,13 @@ import { useNavigate } from "react-router-dom";
 import { StoreContext } from "../context/StoreContext";
 
 const Cart = () => {
-  const { cartItems, food_list, removeFromCart, getTotalCartAmount } =
+  const { cartItems, foodList, removeFromCart, getTotalCartAmount, url } =
     useContext(StoreContext);
 
   const navigate = useNavigate();
 
   // Filter only items in the cart
-  const cartProducts = food_list.filter((item) => cartItems[item._id] > 0);
+  const cartProducts = foodList.filter((item) => cartItems[item._id] > 0);
 
   return (
     <div className="mt-24 px-4 flex flex-col min-h-screen">
@@ -36,7 +36,7 @@ const Cart = () => {
               className="grid grid-cols-6 items-center text-gray-700 py-4 border-b text-center"
             >
               <img
-                src={item.image}
+                src={url + "/images/" + item.image}
                 alt={item.name}
                 className="w-16 h-16 object-cover rounded mx-auto"
               />

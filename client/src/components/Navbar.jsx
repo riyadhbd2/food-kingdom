@@ -5,14 +5,14 @@ import { useContext, useState } from "react";
 import { StoreContext } from "../context/StoreContext";
 
 const Navbar = ({ setShowLogin }) => {
-  const { getTotalCartAmount, getTotalItemCount, token, setToken } =
+  const { getTotalCartAmount, token, setToken } =
     useContext(StoreContext);
   const navigate = useNavigate();
   const [showDropdown, setShowDropdown] = useState(false);
 
   // Logout function
   const handleLogout = () => {
-    setToken(null);
+    setToken("");
     localStorage.removeItem("token");
     setShowDropdown(false);
     navigate("/");
@@ -53,7 +53,7 @@ const Navbar = ({ setShowLogin }) => {
           <img className="w-4 sm:w-5" src={assets.basket_icon} alt="Basket" />
           {getTotalCartAmount() > 0 && (
             <div className="absolute min-w-5 min-h-3 bg-orange-400 border rounded-full top-[-4px] sm:top-[-8px] right-[-4px] sm:right-[-8px] text-white text-[10px] text-center p-[1px]">
-              {getTotalItemCount()}
+              {0}
             </div>
           )}
         </div>
@@ -79,7 +79,7 @@ const Navbar = ({ setShowLogin }) => {
             {/* Dropdown Menu */}
             {showDropdown && (
               <ul className="absolute z-10 right-0 bg-white shadow-lg border rounded-md w-32 text-sm text-gray-700">
-                <li className="px-4 py-2 hover:bg-gray-100 cursor-pointer flex items-center">
+                <li onClick={()=>navigate("/myorders")} className="px-4 py-2 hover:bg-gray-100 cursor-pointer flex items-center">
                   <img src={assets.bag_icon} alt="Orders" className="w-4 mr-2" />
                   Orders
                 </li>
