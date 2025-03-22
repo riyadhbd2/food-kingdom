@@ -8,7 +8,7 @@ const StoreContextProvider = ({ children }) => {
   const [cartCount, setCartCount] = useState(0); // Initialize cartCount with 0
   const [token, setToken] = useState("");
   const [foodList, setFoodList] = useState([]);
-  const url = "http://localhost:6006";
+  const url = `${import.meta.env.VITE_BACKEND_URL}`;
 
   // Add to cart function
   const addToCart = async (itemId) => {
