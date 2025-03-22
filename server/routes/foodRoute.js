@@ -7,7 +7,7 @@ import fs from 'fs';
 const foodRouter = express.Router();
 
 // Ensure 'uploads' folder exists
-const uploadDir = "/uploads";
+const uploadDir = "/tmp/uploads";
 
 if (!fs.existsSync(uploadDir)) {
     fs.mkdirSync(uploadDir, { recursive: true });
