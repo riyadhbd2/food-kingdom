@@ -2,9 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 
-const List = () => {
-  const url = "http://localhost:6006";
-
+const List = ({ url }) => {
   const [list, setList] = useState([]);
 
   // get all data function
@@ -27,13 +25,12 @@ const List = () => {
   // remove data from list
   const removeFromList = async (id) => {
     console.log(id);
-    
+
     try {
-      const response = await axios.post(`${url}/api/food/remove`, {id});
+      const response = await axios.post(`${url}/api/food/remove`, { id });
       if (response.data.success) {
         toast.success(response.data.message);
         fetchList();
-      
       } else {
         toast.error("Error");
       }

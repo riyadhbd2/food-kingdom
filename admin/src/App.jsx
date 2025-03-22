@@ -8,17 +8,18 @@ import Orders from './pages/Orders';
 import { ToastContainer} from 'react-toastify';
 
 const App = () => {
+  const url = "http://localhost:6006";
   return (
     <div>
       <ToastContainer />
       <Navbar/>
       <hr/>
-      <div className='md:flex gap-10'>
+      <div className='sm:flex gap-10'>
         <Sidebar/>
         <Routes>
-          <Route path="/add" element={<Add/>}/>
-          <Route path="/list" element={<List/>}/>
-          <Route path="/orders" element={<Orders/>}/>
+          <Route path="/add" element={<Add url={url}/>}/>
+          <Route path="/list" element={<List url={url}/>}/>
+          <Route path="/orders" element={<Orders url={url}/>}/>
         </Routes>
       </div>
     </div>

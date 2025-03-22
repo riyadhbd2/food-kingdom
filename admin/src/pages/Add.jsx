@@ -3,8 +3,8 @@ import { useEffect, useState } from "react";
 import { assets } from "../assets/assets";
 import { toast } from "react-toastify";
 
-const Add = () => {
-  const url = "http://localhost:6006";
+const Add = ({url}) => {
+
   const [image, setImage] = useState(null);
   const [data, setData] = useState({
     name: "",
