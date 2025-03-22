@@ -13,21 +13,7 @@ const port = process.env.PORT || 6006;
 
 // middle ware
 app.use(express.json());
-
-// Allow multiple origins
-const allowedOrigins = ["http://localhost:5174", "http://localhost:5174/", ""];
-app.use(
-  cors({
-    origin: function (origin, callback) {
-      if (!origin || allowedOrigins.includes(origin)) {
-        callback(null, true);
-      } else {
-        callback(new Error("Not allowed by CORS"));
-      }
-    },
-    credentials: true,
-  })
-);
+app.use(cors({ origin: "*" }));
 
 // db connection
 connectDB();
