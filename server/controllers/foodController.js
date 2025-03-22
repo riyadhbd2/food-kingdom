@@ -21,14 +21,14 @@ const addFood = async (req, res) => {
     }
 
     // Get the image filename
-    const image_filename = req.file.filename;
+    const image_url = req.file.path; // ✅ Cloudinary URL 
 
     const food = new foodModel({
       name,
       price,
       category,
       description,
-      image: image_filename,
+      image: image_url,
     });
 
     await food.save();
