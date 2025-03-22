@@ -5,7 +5,7 @@ import { useContext, useState } from "react";
 import { StoreContext } from "../context/StoreContext";
 
 const Navbar = ({ setShowLogin }) => {
-  const { getTotalCartAmount, token, setToken } =
+  const { getTotalCartAmount, token, setToken, cartCount } =
     useContext(StoreContext);
   const navigate = useNavigate();
   const [showDropdown, setShowDropdown] = useState(false);
@@ -53,7 +53,7 @@ const Navbar = ({ setShowLogin }) => {
           <img className="w-4 sm:w-5" src={assets.basket_icon} alt="Basket" />
           {getTotalCartAmount() > 0 && (
             <div className="absolute min-w-5 min-h-3 bg-orange-400 border rounded-full top-[-4px] sm:top-[-8px] right-[-4px] sm:right-[-8px] text-white text-[10px] text-center p-[1px]">
-              {0}
+              {cartCount}
             </div>
           )}
         </div>

@@ -1,6 +1,7 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { StoreContext } from "../context/StoreContext";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const PlaceOrder = () => {
   const { getTotalCartAmount, token, foodList, cartItems, url } =
@@ -63,6 +64,18 @@ const PlaceOrder = () => {
       alert("Something went wrong. Please try again.");
     }
   };
+
+  const naviagte = useNavigate();
+
+  // logic not to enter payment without login or empty cart
+  useEffect(()=>{
+    if (!token) {
+      naviagte('/cart')
+    }
+    else if(getTotalCartAmount() === 0){
+      naviagte('/cart')
+    }
+  },[token])
 
   return (
     <form onSubmit={placeOrder} className="flex flex-wrap items-start justify-center gap-12 mt-24 px-4">

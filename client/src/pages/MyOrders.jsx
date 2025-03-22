@@ -21,6 +21,8 @@ const MyOrders = () => {
     }
   };
 
+  // function
+
   // Fetch orders when the page loads or when token changes
   useEffect(() => {
     if (token) {
@@ -71,6 +73,7 @@ const MyOrders = () => {
                   </div>
                 </div>
                 <button
+                onClick={fetchOrders}
                   className="mt-4 sm:mt-0 bg-orange-600 text-white py-2 px-6 rounded-lg hover:bg-orange-700 transition"
                 >
                   Track Order
