@@ -7,7 +7,7 @@ import fs from 'fs';
 const foodRouter = express.Router();
 
 // Ensure 'uploads' folder exists
-const uploadDir = path.join("/tmp/uploads");
+const uploadDir = "/tmp/uploads";
 
 if (!fs.existsSync(uploadDir)) {
     fs.mkdirSync(uploadDir, { recursive: true });
@@ -26,10 +26,9 @@ const storage = multer.diskStorage({
 // Create Multer instance
 const upload = multer({ storage: storage });
 
-// ✅ Apply `upload.single("image")` before `addFood`
+// Routes
 foodRouter.post('/add', upload.single("image"), addFood);
 foodRouter.get('/list', listFood);
 foodRouter.post('/remove', removeFood);
-// 
 
 export default foodRouter;
