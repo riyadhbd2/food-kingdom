@@ -15,7 +15,7 @@ const foodSchema = new mongoose.Schema({
         type: String,
         required: true,
         trim: true,
-        enum: ['Veg', 'Non-Veg', 'Dessert', 'Drink'], // Optional: Restrict values
+        enum: ['Salad', 'Rolls', 'Desserts', 'Sandwich', 'Cake', 'Pure Veg', 'Pasta', 'Noodles'], // Optional: Restrict values
     },
     description: {
         type: String,
