@@ -67,7 +67,7 @@ const List = ({ url }) => {
             {/* Image */}
             <div className="w-1/4">
               <img
-                src={`${url}/images/` + item.image}
+                src={item.image}
                 alt={item.name}
                 className="w-16 h-16 object-cover rounded-md mx-auto"
               />
