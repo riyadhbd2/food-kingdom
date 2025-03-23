@@ -13,6 +13,8 @@ const port = process.env.PORT || 6006;
 
 // middle ware
 app.use(express.json());
+app.use(express.urlencoded({ extended: true })); // ✅ Allows form-data requests
+
 app.use(cors({ origin: "*" }));
 
 // db connection
