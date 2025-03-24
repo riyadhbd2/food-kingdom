@@ -36,7 +36,7 @@ const Cart = () => {
               className="grid grid-cols-6 items-center text-gray-700 py-4 border-b text-center"
             >
               <img
-                src={url + "/images/" + item.image}
+                src={item.image}
                 alt={item.name}
                 className="w-16 h-16 object-cover rounded mx-auto"
               />
