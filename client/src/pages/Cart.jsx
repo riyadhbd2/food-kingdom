@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { StoreContext } from "../context/StoreContext";
 
 const Cart = () => {
-  const { cartItems, foodList, removeFromCart, getTotalCartAmount, url } =
+  const { cartItems, foodList, removeFromCart, getTotalCartAmount} =
     useContext(StoreContext);
 
   const navigate = useNavigate();
