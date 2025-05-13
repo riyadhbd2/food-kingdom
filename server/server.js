@@ -15,7 +15,13 @@ const port = process.env.PORT || 6006;
 app.use(express.json());
 app.use(express.urlencoded({ extended: true })); // ✅ Allows form-data requests
 
-app.use(cors({ origin: "*" }));
+// app.use(cors({ origin: "*" }));
+// Allow requests from your frontend
+app.use(cors({
+    origin: [process.env.FRONTEND_URL, 'http://localhost:5176'], // Both URLs should be strings
+    credentials: true
+  }));
+  
 
 // db connection
 connectDB();
