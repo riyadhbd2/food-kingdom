@@ -18,7 +18,7 @@ app.use(express.urlencoded({ extended: true })); // ✅ Allows form-data request
 // app.use(cors({ origin: "*" }));
 // Allow requests from your frontend
 app.use(cors({
-    origin: [process.env.FRONTEND_URL, 'http://localhost:5176'], // Both URLs should be strings
+    origin: [process.env.CLIENT_URL, process.env.ADMIN_URL, 'http://localhost:5176'], // Both URLs should be strings
     credentials: true
   }));
   
